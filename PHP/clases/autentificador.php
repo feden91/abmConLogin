@@ -8,20 +8,20 @@ include_once 'SignatureInvalidException.php';
 
 $objDatos=json_decode(file_get_contents("php://input"));
 
-$idUsuario=Usuario::ChequearUsuario($objDatos->nombre, $objDatos->clave); // devuelve id o flase si esta mal
+$idUsuario=persona::validarusuario($objDatos->nombre, $objDatos->clave); // devuelve id o flase si esta mal
 
-// if($objDatos->usuario=="pepito" && $objDatos->clave=="666")
-// {
-// 	$idUsuario=1;
-// }
+ //if($objDatos->usuario=="pepito" && $objDatos->clave=="666")
+ //{
+ 	//$idUsuario=1;
+ //}
 
 
 
-// if($idUsuario==false)
-// {
-// 	$token=array(
+/*if($idUsuario==false)
+{
+ 	$token=array(
 
-// 	"id"=> "666",
+	"id"=> "666",*/
 // 	"nombre"=>"natalia",
 // 	"perfil"=>"natalia",
 // 	"exp"=>time() - 96000
@@ -41,15 +41,13 @@ $idUsuario=Usuario::ChequearUsuario($objDatos->nombre, $objDatos->clave); // dev
 // 	"perfil"=>"Administrador",
 // 	"exp"=>time() + 96000
 // 	);
+ 	/*$token = Firebase\JWT\JWT::encode($token, 'clave');
 
-// 	$token = Firebase\JWT\JWT::encode($token, 'clave');
+	$array['tokenTest2016']=$token;
 
-// 	$array['tokenTest2016']=$token;
+	echo json_encode($array);	 }
 
-// 	echo json_encode($array);	
-// }
-
-
+*/
 
 // 1- tomo dtos del http
 // 2- verifico con un metodo de la clase usuario si son datos validos

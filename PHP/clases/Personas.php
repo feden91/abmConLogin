@@ -154,7 +154,18 @@ class Persona
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
+  public function validarusuario($usuario,$clave)
+     {
+            $objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+           // $consulta =$objetoAccesoDato->RetornarConsulta("select * from usuario where correo='$usuario' and clave='$clave'");
+            $consulta =$objetoAccesoDato->RetornarConsulta("CALL validarpersona(:nombre,:clave)");
+            $consulta->bindValue(':nombre',$nombre, PDO::PARAM_INT);
+            $consulta->bindValue(':clave', $clave, PDO::PARAM_STR);
+             $consulta->execute(); 
+            $UsuarioBuscado= $consulta->fetchObject('persona');
+            return $UsuarioBuscado;
 
+     }
 	public static function InsertarPersona($persona)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
